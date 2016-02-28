@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9319A1011C8354B500E8A67D /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 9319A1001C8354B500E8A67D /* .gitignore */; };
 		932835CA1C7FDC93000CEE58 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932835C91C7FDC93000CEE58 /* PlaySoundsViewController.swift */; };
 		932835CC1C7FE605000CEE58 /* suporting Files in Resources */ = {isa = PBXBuildFile; fileRef = 932835CB1C7FE605000CEE58 /* suporting Files */; };
 		932835CF1C7FF35A000CEE58 /* RecordedAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932835CE1C7FF35A000CEE58 /* RecordedAudio.swift */; };
@@ -19,7 +18,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9319A1001C8354B500E8A67D /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = .gitignore; path = "suporting Files/.gitignore"; sourceTree = "<group>"; };
 		932835C91C7FDC93000CEE58 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
 		932835CB1C7FE605000CEE58 /* suporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "suporting Files"; sourceTree = "<group>"; };
 		932835CE1C7FF35A000CEE58 /* RecordedAudio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordedAudio.swift; sourceTree = "<group>"; };
@@ -29,7 +27,6 @@
 		93E222821C7E9AEB0073FF91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		93E222841C7E9AEB0073FF91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93E222871C7E9AEB0073FF91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		93E222891C7E9AEB0073FF91 /* suporting Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "suporting Files"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,8 +44,6 @@
 			isa = PBXGroup;
 			children = (
 				932835CB1C7FE605000CEE58 /* suporting Files */,
-				93E222891C7E9AEB0073FF91 /* suporting Files */,
-				9319A1001C8354B500E8A67D /* .gitignore */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -143,7 +138,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9319A1011C8354B500E8A67D /* .gitignore in Resources */,
 				93E222881C7E9AEB0073FF91 /* LaunchScreen.storyboard in Resources */,
 				93E222851C7E9AEB0073FF91 /* Assets.xcassets in Resources */,
 				932835CC1C7FE605000CEE58 /* suporting Files in Resources */,
@@ -276,11 +270,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pitch Perfect/suporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solu4b.prueba.Pitch-Perfect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -290,11 +285,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = "Pitch Perfect/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Pitch Perfect/suporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.solu4b.prueba.Pitch-Perfect";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
