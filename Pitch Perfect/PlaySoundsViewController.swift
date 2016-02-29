@@ -83,11 +83,18 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         stopButton.enabled = true
     }
     
+    /**
+     Permite reproducir un audio con distintos efectos
+     - parameters:
+       - effect: El efecto deseado. Puede ser: `.Delay`, `.Pitch` o `.Reverb`
+       - value: el valor asignado al efecto
+     - returns: la reproducción del audio con el efecto deseado.
+     */
     func playAudioWith(effect: Effect, value: Float){
         audioPlayer.stop()
         audioEngine.stop()
         audioEngine.reset()
-        
+        //this block of code I don't understand very much.
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
 
@@ -115,11 +122,12 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
             audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: nil)
             audioEngine.connect(changeReverbEffect, to: audioEngine.outputNode, format: nil)
         }
-
+        
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()
         audioPlayerNode.play()
         stopButton.enabled = true
+        //end of block of code
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
