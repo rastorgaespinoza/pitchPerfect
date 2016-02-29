@@ -214,6 +214,12 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darthvader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgL-6J-Qoq">
+                                <rect key="frame" x="194" y="344" width="77" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chipmunk" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvY-c7-tNU">
                                 <rect key="frame" x="53" y="344" width="70" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
@@ -226,8 +232,28 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Darthvader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgL-6J-Qoq">
-                                <rect key="frame" x="194" y="344" width="77" height="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rC-MC-Fag">
+                                <rect key="frame" x="44" y="370" width="88" height="80"/>
+                                <state key="normal" image="reverb"/>
+                                <connections>
+                                    <action selector="playReverbAudio:" destination="i5x-IE-wKc" eventType="touchUpInside" id="Aiu-Q7-2sc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reverb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vc5-VZ-LtC">
+                                <rect key="frame" x="64" y="458" width="48" height="18"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w90-PU-7t6">
+                                <rect key="frame" x="188" y="370" width="88" height="80"/>
+                                <state key="normal" image="echo"/>
+                                <connections>
+                                    <action selector="playEchoAudio:" destination="i5x-IE-wKc" eventType="touchUpInside" id="g5u-lB-lYm"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Echo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAA-Pw-P1f">
+                                <rect key="frame" x="215" y="458" width="35" height="18"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleCallout"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -235,10 +261,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="1rC-MC-Fag" firstAttribute="top" secondItem="Kse-BC-Wfm" secondAttribute="bottom" constant="28" id="0vM-hf-wLr"/>
                             <constraint firstItem="3fd-OI-k7P" firstAttribute="top" secondItem="DXY-ut-I5c" secondAttribute="bottom" constant="28" id="2fZ-oo-NVB"/>
+                            <constraint firstItem="w90-PU-7t6" firstAttribute="centerX" secondItem="3fd-OI-k7P" secondAttribute="centerX" id="35w-h5-GnF"/>
                             <constraint firstItem="jbq-cy-nBN" firstAttribute="centerX" secondItem="Xjz-Cb-2wK" secondAttribute="centerX" id="7tS-4h-f9v"/>
                             <constraint firstItem="Kse-BC-Wfm" firstAttribute="top" secondItem="SzQ-wr-Zhw" secondAttribute="bottom" constant="28" id="8pL-V3-gjP"/>
                             <constraint firstItem="s3L-lV-NEp" firstAttribute="centerX" secondItem="jbq-cy-nBN" secondAttribute="centerX" id="Aap-jO-1ka"/>
+                            <constraint firstItem="vc5-VZ-LtC" firstAttribute="top" secondItem="1rC-MC-Fag" secondAttribute="bottom" constant="8" id="DjS-tC-bN4"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="w90-PU-7t6" secondAttribute="trailing" constant="28" id="FPg-ch-Mja"/>
+                            <constraint firstItem="w90-PU-7t6" firstAttribute="top" secondItem="3fd-OI-k7P" secondAttribute="bottom" constant="28" id="Fj2-b2-GDH"/>
+                            <constraint firstItem="vc5-VZ-LtC" firstAttribute="centerX" secondItem="1rC-MC-Fag" secondAttribute="centerX" id="LTN-yx-9SL"/>
                             <constraint firstItem="rEm-4P-dLi" firstAttribute="centerX" secondItem="SzQ-wr-Zhw" secondAttribute="centerX" id="MAo-NR-8pN"/>
                             <constraint firstItem="R8M-Rs-cBy" firstAttribute="top" secondItem="jbq-cy-nBN" secondAttribute="bottom" constant="32" id="Pr8-Et-y4W"/>
                             <constraint firstItem="SzQ-wr-Zhw" firstAttribute="leading" secondItem="Xjz-Cb-2wK" secondAttribute="leadingMargin" constant="22" id="QI0-fR-P6e"/>
@@ -247,11 +279,15 @@
                             <constraint firstItem="DXY-ut-I5c" firstAttribute="top" secondItem="5eo-XI-eTj" secondAttribute="bottom" constant="50" id="dDD-GB-li7"/>
                             <constraint firstItem="Cww-P7-sjh" firstAttribute="centerX" secondItem="Xjz-Cb-2wK" secondAttribute="centerX" id="doq-EK-U5m"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3fd-OI-k7P" secondAttribute="trailing" constant="22" id="eRI-V6-QHM"/>
+                            <constraint firstItem="DAA-Pw-P1f" firstAttribute="top" secondItem="w90-PU-7t6" secondAttribute="bottom" constant="8" id="erj-Gx-Pxj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="DXY-ut-I5c" secondAttribute="trailing" constant="22" id="gtj-qA-F9t"/>
                             <constraint firstItem="SzQ-wr-Zhw" firstAttribute="top" secondItem="5eo-XI-eTj" secondAttribute="bottom" constant="50" id="jAc-kx-4tq"/>
                             <constraint firstItem="Kse-BC-Wfm" firstAttribute="leading" secondItem="Xjz-Cb-2wK" secondAttribute="leadingMargin" constant="22" id="l0T-CB-PSW"/>
                             <constraint firstItem="rEm-4P-dLi" firstAttribute="top" secondItem="SzQ-wr-Zhw" secondAttribute="bottom" constant="2" id="l1s-cU-gqc"/>
+                            <constraint firstItem="1rC-MC-Fag" firstAttribute="leading" secondItem="Xjz-Cb-2wK" secondAttribute="leadingMargin" constant="28" id="qYZ-vz-UGg"/>
+                            <constraint firstItem="1rC-MC-Fag" firstAttribute="centerX" secondItem="Kse-BC-Wfm" secondAttribute="centerX" id="tkR-vx-PnZ"/>
                             <constraint firstItem="s3L-lV-NEp" firstAttribute="top" secondItem="jbq-cy-nBN" secondAttribute="bottom" constant="8" id="uVA-w8-SOz"/>
+                            <constraint firstItem="DAA-Pw-P1f" firstAttribute="centerX" secondItem="w90-PU-7t6" secondAttribute="centerX" id="udP-5r-KzZ"/>
                             <constraint firstItem="N4z-FC-ytM" firstAttribute="top" secondItem="DXY-ut-I5c" secondAttribute="bottom" constant="2" id="vKl-9d-Qlf"/>
                             <constraint firstItem="Cww-P7-sjh" firstAttribute="top" secondItem="5eo-XI-eTj" secondAttribute="bottom" constant="8" id="wLp-iF-Vtl"/>
                             <constraint firstItem="ZgL-6J-Qoq" firstAttribute="top" secondItem="3fd-OI-k7P" secondAttribute="bottom" constant="2" id="wof-Go-RfN"/>
@@ -272,11 +308,13 @@
     <resources>
         <image name="ardilla" width="100" height="100"/>
         <image name="datrhVader" width="100" height="100"/>
+        <image name="echo" width="80" height="80"/>
         <image name="lento" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="pause" width="100" height="100"/>
         <image name="rapido" width="100" height="100"/>
         <image name="resume" width="100" height="100"/>
+        <image name="reverb" width="80" height="80"/>
         <image name="stopButton" width="50" height="50"/>
     </resources>
 </document>

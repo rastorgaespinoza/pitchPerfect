@@ -53,6 +53,14 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         playAudioWithVariablePitch(-1000)
     }
     
+    @IBAction func playReverbAudio(sender: UIButton) {
+        playAudioWithReverb()
+    }
+    
+    @IBAction func playEchoAudio(sender: UIButton) {
+        playAudioWithDelay()
+    }
+    
     @IBAction func stopButton(sender: UIButton) {
         if audioPlayer.playing{
             audioPlayer.stop()
@@ -96,6 +104,52 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayerNode.play()
         stopButton.enabled = true
     }
+    
+    func playAudioWithReverb(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        let changeReverbEffect = AVAudioUnitReverb()
+        changeReverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
+        changeReverbEffect.wetDryMix = 50
+        audioEngine.attachNode(changeReverbEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: nil)
+        audioEngine.connect(changeReverbEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+        audioPlayerNode.play()
+        stopButton.enabled = true
+    }
+    
+    
+    func playAudioWithDelay(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        
+        let audioPlayerNode = AVAudioPlayerNode()
+        audioEngine.attachNode(audioPlayerNode)
+        
+        let changeDelayEffect = AVAudioUnitDelay()
+        changeDelayEffect.delayTime = NSTimeInterval(0.5)
+        audioEngine.attachNode(changeDelayEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: changeDelayEffect, format: nil)
+        audioEngine.connect(changeDelayEffect, to: audioEngine.outputNode, format: nil)
+        
+        audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        try! audioEngine.start()
+        audioPlayerNode.play()
+        stopButton.enabled = true
+    }
+    
+    
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
         if flag{
