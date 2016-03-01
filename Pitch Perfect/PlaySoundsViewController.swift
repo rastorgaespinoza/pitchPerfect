@@ -28,7 +28,7 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         audioPlayer.delegate = self
-        
+
         stopButton.enabled = false
 
     }
@@ -46,41 +46,32 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
-        playAudioWith(.Pitch, value: 1000)
+        playAudioWithEffect(.Pitch, value: 1000)
     }
     
     @IBAction func playDarthvaderAudio(sender: UIButton) {
-        playAudioWith(.Pitch, value: -1000)
+        playAudioWithEffect(.Pitch, value: -1000)
     }
     
     @IBAction func playReverbAudio(sender: UIButton) {
-        playAudioWith(.Reverb, value: 50)
+        playAudioWithEffect(.Reverb, value: 50)
     }
     
     @IBAction func playEchoAudio(sender: UIButton) {
-        playAudioWith(.Delay, value: 0.5)
+        playAudioWithEffect(.Delay, value: 0.5)
     }
     
     @IBAction func stopButton(sender: UIButton) {
-        if audioPlayer.playing{
-            audioPlayer.stop()
-            audioPlayer.currentTime = 0.0
-            stopButton.enabled = false
-        }else {
-            audioEngine.stop()
-            audioEngine.reset()
-            stopButton.enabled = false
-        }
+        stopAudio()
+        audioPlayer.currentTime = 0.0
+        stopButton.enabled = false
     }
     
     private func playAudioWithVariableRate(rate: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAudio()
         audioPlayer.rate = rate
         audioPlayer.currentTime = 0.0
         audioPlayer.play()
-        stopButton.enabled = true
     }
     
     /**
@@ -90,10 +81,9 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
        - value: el valor asignado al efecto
      - returns: la reproducción del audio con el efecto deseado.
      */
-    func playAudioWith(effect: Effect, value: Float){
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+    func playAudioWithEffect(effect: Effect, value: Float){
+        stopAudio()
+        
         //this block of code I don't understand very much.
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -126,8 +116,14 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()
         audioPlayerNode.play()
-        stopButton.enabled = true
         //end of block of code
+    }
+    
+    func stopAudio(){
+        audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
+        stopButton.enabled = true
     }
     
     func audioPlayerDidFinishPlaying(player: AVAudioPlayer, successfully flag: Bool) {
@@ -141,7 +137,5 @@ class PlaySoundsViewController: UIViewController, AVAudioPlayerDelegate {
     enum Effect {
         case Delay, Pitch, Reverb
     }
-
-    
 
 }

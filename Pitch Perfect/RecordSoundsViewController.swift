@@ -37,31 +37,18 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
-        recordButton.enabled = true
-        stopButton.hidden = true
-        pauseButton.hidden = true
-        resumeButton.hidden = true
-        tapLabel.hidden = false
         tapLabel.text = "Tap to record"
-        resumeLabel.hidden = true
-        stopLabel.hidden = true
-        pauseLabel.hidden = true
+        tapLabel.hidden = false
+        hideButtons(true)
+        recordButton.enabled = true
+        pauseButton.enabled = true
     }
 
     //MARK: - Functions
     @IBAction func recordAudio(sender: UIButton) {
-        //config Buttons and Label:
-        recordingInProgress.hidden = false
-        recordButton.enabled = false
-        stopButton.hidden = false
-        pauseButton.hidden = false
-        pauseButton.enabled = true
-        resumeButton.hidden = false
-        resumeButton.enabled = false
+        hideButtons(false)
+        enableButtons(false)
         tapLabel.hidden = true
-        resumeLabel.hidden = false
-        stopLabel.hidden = false
-        pauseLabel.hidden = false
         
         //this line I don't undestand very much. recuperado de Udacity.(sorry for my english.)
         let dirPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0] as String
@@ -81,35 +68,29 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     @IBAction func resumeAudio(sender: UIButton) {
-        recordingInProgress.hidden = false
-        recordButton.enabled = false
-        resumeButton.enabled = false
-        pauseButton.enabled = true
         audioRecorder.record()
+        
+        enableButtons(false)
+        pauseButton.enabled = true
         tapLabel.hidden = true
     }
     
     @IBAction func pauseAudio(sender: UIButton) {
-        recordingInProgress.hidden = true
-        recordButton.enabled = true
-        resumeButton.enabled = true
-        pauseButton.enabled = false
         audioRecorder.pause()
-        tapLabel.text = "touch the microphone again if you want to start a new recording"
-        tapLabel.hidden = false
         
+        enableButtons(true)
+        tapLabel.text = "touch the microphone again if you want to start a new recording"
+        pauseButton.enabled = false
+        tapLabel.hidden = false
     }
     
     
     @IBAction func stopAudio(sender: UIButton) {
-        recordingInProgress.hidden = true
-        pauseButton.hidden = true
-        resumeButton.hidden = true
-        resumeLabel.hidden = true
-        stopLabel.hidden = true
-        pauseLabel.hidden = true
-        
         audioRecorder.stop()
+        
+        hideButtons(false)
+        tapLabel.hidden = true
+        
         let audioSession = AVAudioSession.sharedInstance()
         try! audioSession.setActive(false)
     }
@@ -117,14 +98,27 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
         if flag {
             recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
-            
-            self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
+            performSegueWithIdentifier("stopRecording", sender: recordedAudio)
         }else{
             recordButton.enabled = true
-            stopButton.hidden = true
-            resumeButton.hidden = true
-            pauseButton.hidden = true
+            hideButtons(true)
         }
+    }
+    
+    func enableButtons(value: Bool){
+        recordingInProgress.hidden = value
+        recordButton.enabled = value
+        resumeButton.enabled = value
+    }
+    
+    func hideButtons(value: Bool){
+        recordingInProgress.hidden = value
+        resumeButton.hidden = value
+        resumeLabel.hidden = value
+        stopButton.hidden = value
+        stopLabel.hidden = value
+        pauseButton.hidden = value
+        pauseLabel.hidden = value
     }
     
     //MARK: - Navigation
@@ -135,6 +129,5 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.receivedAudio = data
         }
     }
-    
     
 }
